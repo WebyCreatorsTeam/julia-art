@@ -1,9 +1,13 @@
+'use client';
+
 import Link from "next/link"
 import { navLinks } from "../text/navLinks"
 
 
 const Navbar = () => {
   return (
+   
+ 
     <nav>
            <ul>
         {navLinks.map((link, index) => (
@@ -13,6 +17,8 @@ const Navbar = () => {
         ))}
       </ul>
         </nav>
+     
+       
   )
 }
 
