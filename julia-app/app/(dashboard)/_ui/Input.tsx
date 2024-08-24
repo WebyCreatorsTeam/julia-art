@@ -1,9 +1,16 @@
-import React from 'react'
+import "../_style/_ui/input.scss"
 
-const Input = () => {
+interface IFormInput {
+  type: string
+  placeholder: string
+}
+
+const FormInput = (
+  { type, placeholder }: IFormInput
+) => {
   return (
-    <div>Input</div>
+    <input className="formInput" type={type} placeholder={placeholder}/>
   )
 }
 
-export default Input
+export default FormInput

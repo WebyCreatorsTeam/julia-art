@@ -1,0 +1,17 @@
+@import "../_vars/vars";
+
+.formInput {
+    // background-color: aqua;
+    width: 85%;
+    // margin: 0% auto;
+    border-radius: 30px;
+    padding: 2% 0 2% 0;
+    // border: none;
+
+    &::placeholder {
+        color: $placeholderColor; 
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+    }
+}
