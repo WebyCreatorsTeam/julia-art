@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { Magra } from 'next/font/google';
 
 const config: Config = {
   content: [

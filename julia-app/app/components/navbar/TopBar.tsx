@@ -36,7 +36,7 @@ const TopBar = () => {
          items-center
         ">
         <Image 
-        src="/vector.png"
+        src={isNavbarVisible ? "/close.svg" : "/vector.svg"}
         width={30}
         height={30}
         className="self-center"
@@ -45,8 +45,7 @@ const TopBar = () => {
       </button>
  </div>
 
- <div className="
-  sm:w-[375px] sm:h-[220px] top-[121px] left-[-1px] gap-0">
+ <div className="">
   {isNavbarVisible && <Navbar />}
  </div>
  </>
