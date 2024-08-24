@@ -1,15 +1,11 @@
 import "../_style/_ui/input.scss"
-
-interface IFormInput {
-  type: string
-  placeholder: string
-}
+import { IFormInput } from "../_ts/form-fields.intarface"
 
 const FormInput = (
   { type, placeholder }: IFormInput
 ) => {
   return (
-    <input className="formInput" type={type} placeholder={placeholder}/>
+    <input className="formInput" type={type} placeholder={placeholder} />
   )
 }
 

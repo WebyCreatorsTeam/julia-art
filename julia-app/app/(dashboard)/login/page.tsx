@@ -1,19 +1,17 @@
 import React from 'react'
 import Input from '../_ui/Input'
 import "../_style/_pages/_login.scss"
-
-const FormInput = [
-  { type: "text", placeholder: "Введите Логин" },
-  { type: "password", placeholder: "Введите Пароль" },
-]
+import AuthBtn from '../_ui/Buttons/AuthBtn/AuthBtn'
+import { LoginInputFileds } from '../_form-fields/login'
 
 const page = () => {
   return (
     <section className='loginPage_dash'>
       <div className='loginPage_dash__container'>
-        <h1>Вход в <br /> админ-панель</h1>
+        <h1>Вход в <br /> Админ-панель</h1>
         <form action="">
-          {FormInput.map((el, i) => (<Input key={i} type={el.type} placeholder={el.placeholder} />))}
+          {LoginInputFileds.map((el, i) => (<Input key={i} type={el.type} placeholder={el.placeholder} />))}
+          <AuthBtn btnText="Войти"/>
         </form>
       </div>
     </section>

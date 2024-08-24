@@ -1,15 +1,16 @@
 @import "../_vars/vars";
 
 .formInput {
-    // background-color: aqua;
     width: 85%;
-    // margin: 0% auto;
-    border-radius: 30px;
-    padding: 2% 0 2% 0;
-    // border: none;
+    border-radius: $login_radius;
+    box-sizing: border-box;
+    padding: 15px 20px 13px 20px;
+    border: none;
+    margin: 10px 0px;
+    font-size: 18px;
 
     &::placeholder {
-        color: $placeholderColor; 
+        color: $placeholderColor;
         font-size: 18px;
         font-weight: 700;
         text-align: center;
