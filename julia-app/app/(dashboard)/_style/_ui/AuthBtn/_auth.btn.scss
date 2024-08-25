@@ -1,0 +1,12 @@
+@import "../../_vars/vars";
+
+.authBtn {
+    width: 85%;
+    border-radius: $login_radius;
+    box-sizing: border-box;
+    padding: 15px 20px 13px 20px;
+    border: none;
+    margin: 10px 0px;
+    font-size: 18px;
+    background-color:rgb(214, 214, 214);
+}
