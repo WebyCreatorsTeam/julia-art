@@ -4,6 +4,15 @@ import Footer from "../_ui/Components/Footer"
 export const metadata = {
   title: 'Админ Панель',
   description: 'Админка',
+
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  }
 }
 
 export default function RootLayout({

@@ -14,10 +14,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <nav>
-          <Link href="/dashboard">Дешбоард</Link>
-          <Link href="/dashboard/albums">Альбомы</Link>
-          <Link href="/dashboard/users">Пользователи</Link>
-          <Link href="/">На Главную Страницу Сайта</Link>
+          <Link href="/dashboard">Категории</Link>
+          <Link href="/dashboard/albums">Товары</Link>
+          <Link href="/dashboard">Новости</Link>
+          <Link href="/dashboard/users">Админы</Link>
         </nav>
         {children}
       </body>
