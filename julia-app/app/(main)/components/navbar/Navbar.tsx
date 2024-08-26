@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link"
-import { navLinks } from "../text/navLinks"
+import { navLinks } from "../../text/navLinks";
 
 
 const Navbar = () => {
@@ -10,9 +10,13 @@ const Navbar = () => {
  
     <nav className="
      sm:w-[100%] sm:h-[220px] sm:left-[-1px] sm:absolute sm:bg-white sm:shadow-lg sm:rounded-lg sm:p-4 sm:top-[121px] 
+
+     md:w-[720px] md:h-[50px] md:top-[122px] md:rounded-b-[30px] 
+ 
     ">
            <ul className="
            sm:flex sm:flex-col sm:space-y-4
+          
            ">
         {navLinks.map((link, index) => (
           <li key={index}

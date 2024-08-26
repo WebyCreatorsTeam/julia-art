@@ -16,24 +16,17 @@ const TopBar = () => {
    <>
    <div className="
    sm:bg-smBackground sm:h-[121px] relative 
-    md:bg-green-500 
+   
      lg:bg-red-500">
 
      <button
      onClick={handleToggleBar}
      className="
+        
+         sm:w-[60px] sm:h-[60px] sm:absolute sm:top-[31px] sm:right-10 
+         sm:rounded-[10px] sm:bg-topBg sm:flex sm:justify-center sm:items-center
          md:hidden
          lg:hidden
-         w-[60px] 
-          h-[60px] 
-         absolute 
-         top-[31px] 
-         right-10 
-         rounded-[10px]
-         bg-topBg
-         flex 
-         justify-center 
-         items-center
         ">
         <Image 
         src={isNavbarVisible ? "/close.svg" : "/vector.svg"}
