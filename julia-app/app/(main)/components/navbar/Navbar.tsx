@@ -34,8 +34,11 @@ const Navbar = () => {
           <li key={index}
             className="
             sm:text-[22px] sm:font-semibold sm:text-left sm:text-[#526768] sm:leading-[26.73px] sm:pl-4
+
             md:flex md:items-center md:justify-center
+            md:text-[#526768]
             lg:flex lg:items-center lg:justify-center 
+            lg:text-[#526768]
             ">
             <Link href={link.href}>{link.text}</Link>
           </li>
