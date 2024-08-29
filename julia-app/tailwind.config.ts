@@ -10,9 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        sm: "375px",
-        md: "960px",
-        lg: "1440px",
+        sm: { max: "575px" }, 
+        md: { min: "576px", max: "960px" }, 
+        lg: { min: "961px" },
       },
       backgroundColor: {
         smBackground: "#D9D9D9", 
