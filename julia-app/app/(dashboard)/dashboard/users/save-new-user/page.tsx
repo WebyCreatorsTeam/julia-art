@@ -1,10 +1,10 @@
 "use client";
 
 import { RegInputFileds } from '@/app/(dashboard)/_form-fields/_reg-fields'
+import { State } from '@/app/(dashboard)/_ts/definitions';
 import AuthBtn from '@/app/(dashboard)/_ui/Buttons/AuthBtn/AuthBtn'
 import FormInput from '@/app/(dashboard)/_ui/Input/Input';
-// import FormInput from '@/app/(dashboard)/_ui/Input'
-import { registUser, State } from '@/app/lib/dashboard/action/auth'
+import { registUser } from '@/app/lib/dashboard/action/auth'
 import Link from 'next/link'
 import { useFormState } from 'react-dom';
 

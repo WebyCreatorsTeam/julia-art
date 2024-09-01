@@ -7,7 +7,7 @@ import "../../../_style/_ui/AuthBtn/_auth.btn.scss"
 const AuthBtn = ({btnText}:{btnText: string}) => {
     const { pending } = useFormStatus();
     return (
-        <button className="authBtn" disabled={pending}>{pending ? "פרטים נשלחים..." : btnText}</button>
+        <button className="authBtn" disabled={pending}>{pending ? "Ща все будет..." : btnText}</button>
     )
 }
 
