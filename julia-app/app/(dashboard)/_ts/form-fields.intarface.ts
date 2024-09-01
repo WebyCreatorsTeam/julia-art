@@ -4,5 +4,5 @@ export interface IFormInput {
     type: string
     placeholder: string
     name: string
-    autoComp: string, 
+    autoComp?: string, 
 }

@@ -5,8 +5,11 @@ import AuthBtn from '../_ui/Buttons/AuthBtn/AuthBtn'
 import { LoginInputFileds } from '../_form-fields/login'
 import FormInput from '../_ui/Input/Input'
 import { useFormState } from 'react-dom'
-// import { useActionState } from "react"
 import { authenticate } from "@/app/lib/dashboard/action/auth"
+// import { useActionState } from "react"
+// import { authenticate } from "@/app/lib/dashboard/action/auth"
+// import { FormEvent, useState, ChangeEvent } from "react"
+// import { signIn } from "next-auth/react"
 
 const Login = () => {
   const [errorMessage, formAction, isPending] = useFormState(
@@ -14,13 +17,14 @@ const Login = () => {
     undefined,
   );
 
+  console.log(errorMessage)
   return (
     <section className='loginPage_dash'>
       <div className='loginPage_dash__container'>
         <h1>Вход в <br /> Админ-панель</h1>
         <form action={formAction}>
           {LoginInputFileds.map((el, i) => (<FormInput key={i} errorMessage={undefined} type={el.type} placeholder={el.placeholder} name={el.name} autoComp={el.autoComp} />))}
-          <AuthBtn btnText="Войти" />
+          <AuthBtn btnType={"submit"} btnText="Войти" />
         </form>
       </div>
     </section>

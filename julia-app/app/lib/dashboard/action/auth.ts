@@ -8,6 +8,7 @@ import { AuthError } from 'next-auth';
 import bcrypt from 'bcrypt';
 import { State } from "@/app/(dashboard)/_ts/definitions";
 import { RegValidSchema } from "../validation/validation";
+import { signIn } from "@/auth";
 
 export const registUser = async (prevState: State, formData: FormData) => {
     const validatedFields = RegValidSchema.safeParse({
@@ -41,7 +42,6 @@ export const registUser = async (prevState: State, formData: FormData) => {
     redirect('/dashboard/users');
 }
 
-import { signIn } from 'next-auth/react';
 
 export async function authenticate(
     prevState: string | undefined,
@@ -51,6 +51,7 @@ export async function authenticate(
         await signIn('credentials', formData);
     } catch (error) {
         if (error instanceof AuthError) {
+            console.log("error:sgwgergegh")
             switch (error.type) {
                 case 'CredentialsSignin':
                     return 'Invalid credentials.';
