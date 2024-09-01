@@ -11,7 +11,7 @@ const page = () => {
       <div className='loginPage_dash__container'>
         <h1>Вход в <br /> Админ-панель</h1>
         <form action="">
-          {LoginInputFileds.map((el, i) => (<FormInput key={i} type={el.type} placeholder={el.placeholder} name={el.name} autoComp={el.autoComp}/>))}
+          {/* {LoginInputFileds.map((el, i) => (<FormInput key={i} type={el.type} placeholder={el.placeholder} name={el.name} autoComp={el.autoComp}/>))} */}
           <AuthBtn btnText="Войти"/>
         </form>
       </div>
