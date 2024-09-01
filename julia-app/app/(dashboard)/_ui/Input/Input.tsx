@@ -6,7 +6,7 @@ import { validateValues } from "./fornValidation"
 import { useState } from "react"
 
 const FormInput = ({ state, type, placeholder, name, autoComp }: IFormInput) => {
-  const [inputError, setInputError] = useState()
+  const [inputError, setInputError] = useState<string>("")
 
   const validInput = (ev: React.SyntheticEvent<EventTarget>) => {
     ev.preventDefault()
