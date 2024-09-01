@@ -1,61 +1,17 @@
 'use server'
 
 import connectToDatabase from "../../mongodb"
-import { z } from 'zod';
 import User from "../_models/user.mode";
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-
-const passwordValid = (error_text: string) => {
-    return z
-        .string({
-            required_error: error_text,
-        })
-        .regex(new RegExp('^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$'),
-            "Пароль должен содержать английские буквы и цифры, минимум один специальный символ !@#$%^&* и не содержать пробелов."
-        )
-}
-
-const FormSchema = z.object({
-    userEmail: z
-        .string()
-        .email({ message: "Неверный адрес электронной почты" })
-        .toLowerCase()
-        .trim(),
-    userPassword: passwordValid("Пожалуйста, заполните пароль."),
-    confirmUserPassword: passwordValid("Пожалуйста, заполните пароль повторно."),
-    userName: z
-        .string({
-            required_error: "Пожалуйста, заполните имя.",
-            invalid_type_error: "Имя должно состоять только из букв"
-        })
-        .min(5, {
-            message: "Имя должно состоять минимум из 5 символов."
-        }),
-}).superRefine(({ confirmUserPassword, userPassword }, ctx) => {
-    if (confirmUserPassword !== userPassword) {
-        ctx.addIssue({
-            code: "custom",
-            message: "Пароли не совпадают",
-            path: ['confirmUserPassword']
-        });
-    }
-})
-    ;
-
-export type State = {
-    errors?: {
-        userEmail?: string[];
-        userPassword?: string[];
-        confirmUserPassword?: string[];
-        userName?: string[];
-    };
-    message?: string | null;
-    success?: boolean | null;
-};
+import { AuthError } from 'next-auth';
+import bcrypt from 'bcrypt';
+import { State } from "@/app/(dashboard)/_ts/definitions";
+import { RegValidSchema } from "../validation/validation";
+import { signIn } from "@/auth";
 
 export const registUser = async (prevState: State, formData: FormData) => {
-    const validatedFields = FormSchema.safeParse({
+    const validatedFields = RegValidSchema.safeParse({
         userEmail: formData.get('userEmail'),
         userPassword: formData.get('userPassword'),
         confirmUserPassword: formData.get('confirmUserPassword'),
@@ -73,20 +29,36 @@ export const registUser = async (prevState: State, formData: FormData) => {
     }
     const { userEmail, userPassword, userName } = validatedFields.data;
 
+    const newPass = await bcrypt.hash(userPassword, 10);
+
     try {
         await connectToDatabase()
-        await User.create({ userEmail, userPassword, userName })
-
-        // return { message: "Добавлен новый пользователь", success: true }
-        // revalidatePath('/dashboard/users');
-        // redirect('/dashboard/users');
+        await User.create({ userEmail, userPassword: newPass, userName })
     } catch (error) {
-        // console.log(error)
-        return {
-            message: 'Something went wrong',
-        }
-        // return { message: (error as any).error.errors[0].message || 'Something went wrong', success: false }
+        return { message: 'Something went wrong' }
     }
+
     revalidatePath('/dashboard/users');
     redirect('/dashboard/users');
+}
+
+
+export async function authenticate(
+    prevState: string | undefined,
+    formData: FormData,
+) {
+    try {
+        await signIn('credentials', formData);
+    } catch (error) {
+        if (error instanceof AuthError) {
+            console.log("error:sgwgergegh")
+            switch (error.type) {
+                case 'CredentialsSignin':
+                    return 'Invalid credentials.';
+                default:
+                    return 'Something went wrong.';
+            }
+        }
+        throw error;
+    }
 }

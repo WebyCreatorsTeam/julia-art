@@ -5,7 +5,7 @@ import { IFormInput } from "../../_ts/form-fields.intarface"
 import { validateValues } from "./fornValidation"
 import { useState } from "react"
 
-const FormInput = ({ state, type, placeholder, name, autoComp }: IFormInput) => {
+const FormInput = ({ errorMessage, state, type, placeholder, name, autoComp }: IFormInput) => {
   const [inputError, setInputError] = useState<string>("")
 
   const validInput = (ev: React.SyntheticEvent<EventTarget>) => {
@@ -27,17 +27,15 @@ const FormInput = ({ state, type, placeholder, name, autoComp }: IFormInput) => 
         name={name}
         autoComplete={autoComp}
         aria-describedby="customer-error"
-      onBlur={validInput}
+        onBlur={validInput}
       />
-      {(inputError || state.errors[name]) && (
+      {(inputError || state?.errors[name]) && (
         <div className="validError" id="customer-error" aria-live="polite" aria-atomic="true">
           {inputError && <p>{inputError}</p>}
-          {state.errors[name] &&
-            state.errors[name].map((error: string) => (
-              <p key={error}>
-                {error}
-              </p>
-            ))}
+          {state?.errors[name] && state.errors[name].map((error: string) => (
+            <p key={error}>{error}</p>
+          ))}
+          {errorMessage && <p>{errorMessage}</p>}
         </div>
       )}
     </>

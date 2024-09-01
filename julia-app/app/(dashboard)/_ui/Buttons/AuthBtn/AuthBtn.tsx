@@ -1,13 +1,12 @@
 "use client";
 
-import React from 'react'
 import { useFormStatus } from 'react-dom';
 import "../../../_style/_ui/AuthBtn/_auth.btn.scss"
 
-const AuthBtn = ({btnText}:{btnText: string}) => {
+const AuthBtn = ({ btnText, btnType }: { btnText: string, btnType?: "button" | "submit" | "reset" | undefined }) => {
     const { pending } = useFormStatus();
     return (
-        <button className="authBtn" disabled={pending}>{pending ? "פרטים נשלחים..." : btnText}</button>
+        <button type={btnType ? btnType : "button"} className="authBtn" disabled={pending}>{pending ? "Ща все будет..." : btnText}</button>
     )
 }
 
