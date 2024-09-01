@@ -4,7 +4,12 @@ body,
 html {
     margin: 0;
     padding: 0;
+    background-image: url("/dashboard/background/big-bck.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: calc(100vh - 101px);
+    position: relative;
 }
 
-// @import "./_pages/login";
+@import "./_components/reg";
 @import "./_components/footer.dash";

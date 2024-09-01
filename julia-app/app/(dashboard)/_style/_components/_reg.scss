@@ -1,0 +1,29 @@
+.regPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 250px);
+    margin-bottom: 100px;
+
+    &__form {
+        width: clamp(20rem, 18.981vw + 15.729rem, 32.813rem);
+
+        h1 {
+            color: #325E5F;
+            font-size: clamp(2.375rem, 0.926vw + 2.167rem, 3rem);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        form {
+            background: $blue_green_color;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: $login_radius;
+            padding: 30px 0px;
+        }
+    }
+}
