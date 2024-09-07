@@ -5,8 +5,8 @@ import User from "../../_models/user.mode"
 export const getUsers = async () => {
     try {
         await connectToDatabase()
-        const users = await User.find({})
-        return users
+        const users = await User.find({}).select("-userPassword")
+        return JSON.parse(JSON.stringify(users)); 
     } catch (error) {
         console.error(error)
     }

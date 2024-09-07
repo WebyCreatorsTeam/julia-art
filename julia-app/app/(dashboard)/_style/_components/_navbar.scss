@@ -1,5 +1,8 @@
+@import "@/app/(dashboard)/_style/_vars/vars";
+
 header {
     background-color: aliceblue;
+    margin-bottom: 30px;
 }
 
 nav {
@@ -14,7 +17,7 @@ nav {
 
     p,
     a {
-        color: #526768;
+        color: $main_color_dark;
         margin-right: 50px;
     }
 
@@ -33,7 +36,7 @@ nav {
     }
 
     .exitBtn {
-        color: #FF3374;
+        color: #f66090;
 
         @media screen and (max-width: 961px) {
             margin-bottom: 5%;

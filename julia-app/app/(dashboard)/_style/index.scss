@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./_vars/vars";
+@import "@/app/(dashboard)/_style/_vars/vars";
 
 body,
 html {
@@ -32,4 +32,5 @@ html {
 
 @import "./_components/navbar";
 @import "./_components/reg";
+@import "./_ui/list-item";
 @import "./_components/footer.dash";

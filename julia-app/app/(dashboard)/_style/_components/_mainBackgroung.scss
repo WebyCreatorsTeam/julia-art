@@ -1,0 +1,10 @@
+@import "@/app/(dashboard)/_style/_vars/vars";
+
+.mainBackGroung {
+    background-color: white;
+    border-radius: $main_radius;
+    min-height: 600px;
+    box-sizing: border-box;
+    padding: 30px;
+    color: $main_color_dark ;
+}

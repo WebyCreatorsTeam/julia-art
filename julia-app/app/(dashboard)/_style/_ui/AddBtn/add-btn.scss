@@ -1,0 +1,39 @@
+@import "@/app/(dashboard)/_style/_vars/vars";
+
+.addBtn {
+    display: flex;
+    width: 250px;
+    border-radius: 30px;
+    padding: 15px 20px;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+
+    &.link {
+        background-color: $btn_colors;
+        color: $btn_colors_white;
+
+    }
+
+    &.button {
+        background-color: #E5F0F1;
+        color: $main_color_dark;
+    }
+
+    div {
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+
+        &.lightback {
+            background-color: $btn_colors_white;
+        }
+
+        &.darkback {
+            background-color: $btn_colors;
+        }
+    }
+}
