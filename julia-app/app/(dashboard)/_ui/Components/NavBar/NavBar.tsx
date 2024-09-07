@@ -30,7 +30,7 @@ const NavBar: FC = () => {
         return () => {
             window.removeEventListener("mousedown", handleOutSideClick);
         };
-    }, [ref]);
+    }, [ref]); 
 
     return (
         <header>
