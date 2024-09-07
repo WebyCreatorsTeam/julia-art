@@ -4,7 +4,7 @@ import React from 'react'
 
 const page = async () => {
   const users = await getUsers()
-  console.log(users)
+
   return (
     <div>
       <Link href={'/dashboard/users/save-new-user'}>Добавить пользователя</Link>

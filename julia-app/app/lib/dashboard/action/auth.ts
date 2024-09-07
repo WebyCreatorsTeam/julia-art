@@ -18,7 +18,7 @@ export const registUser = async (prevState: State, formData: FormData) => {
         userName: formData.get('userName'),
     })
 
-    console.log(validatedFields)
+    // console.log(validatedFields)
 
     if (!validatedFields.success) {
         return {
@@ -51,7 +51,6 @@ export async function authenticate(
         await signIn('credentials', formData);
     } catch (error) {
         if (error instanceof AuthError) {
-            console.log("error:sgwgergegh")
             switch (error.type) {
                 case 'CredentialsSignin':
                     return 'Invalid credentials.';

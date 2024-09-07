@@ -21,7 +21,9 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
     <html lang="ru">
       <body>
         <NavBar />
-        {children}
+        <main className="elementWidth">
+          {children}
+        </main>
         {/* <Footer /> */}
       </body>
     </html>

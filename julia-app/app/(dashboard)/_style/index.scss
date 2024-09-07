@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import "./_vars/vars";
 
 body,
@@ -11,5 +15,21 @@ html {
     position: relative;
 }
 
+@mixin windowWidth ($winwidth: 1440px, $winMarg: 0 auto) {
+    max-width: $winwidth;
+    min-width: 320px;
+    margin: $winMarg;
+
+    @media screen and (max-width: 1440px) {
+        width: 90%;
+    }
+}
+
+.elementWidth {
+    @include windowWidth();
+}
+
+
+@import "./_components/navbar";
 @import "./_components/reg";
 @import "./_components/footer.dash";

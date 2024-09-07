@@ -17,7 +17,6 @@ const config: Config = {
       backgroundColor: {
         smBackground: "#D9D9D9", 
         topBg: "#FFFFFF",
-
       },
     },
   },
