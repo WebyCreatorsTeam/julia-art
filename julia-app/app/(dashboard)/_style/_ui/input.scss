@@ -7,11 +7,15 @@
     padding: 15px 20px 13px 20px;
     border: none;
     margin: 10px 0px;
-    font-size: 18px;
+    font-size: $inputFontSize; // min 16px max 18px;
+
+    @media screen and (max-width: 1000px) {
+        padding: 10px 10px 7px 10px;
+    }
 
     &::placeholder {
         color: $placeholderColor;
-        font-size: 18px;
+        font-size: $inputFontSize; // min 16px max 18px;
         font-weight: 700;
         text-align: center;
     }

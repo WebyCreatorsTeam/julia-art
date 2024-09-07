@@ -1,6 +1,24 @@
+@import "@/app/(dashboard)/_style/_vars/vars";
+
 .listItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 0 10px 0;
+
+    form {
+        background-color: $blue_green_color;
+        width: 60%;
+        min-height: 70%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: $main_radius;
+        justify-content: space-evenly;
+
+        @media screen and (max-width: 1000px) {
+            width: 95%;
+        }
+    }
 }

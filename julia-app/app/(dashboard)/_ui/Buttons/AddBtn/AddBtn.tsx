@@ -10,8 +10,8 @@ interface IAddBtn {
   btnText?: string
   btnType?: "button" | "submit" | "reset"
   action?: any
-
 }
+
 const AddBtn = ({ link, href, linkText, btnText, btnType, action }: IAddBtn) => {
   return (
     link ?

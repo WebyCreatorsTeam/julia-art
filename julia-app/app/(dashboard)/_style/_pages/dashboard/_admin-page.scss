@@ -1,0 +1,14 @@
+.admin {
+    &__listOfUsers {
+        column-count: 3;
+        height: 100%;
+        column-fill: auto;
+
+        @media screen and (max-width: 1000px) {
+            column-count: 2;
+        }
+        @media screen and (max-width: 680px) {
+            column-count: 1;
+        }
+    }
+}

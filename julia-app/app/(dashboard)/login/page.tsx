@@ -13,7 +13,6 @@ const Login = () => {
     undefined,
   );
 
-  console.log(errorMessage)
   return (
     <section className='loginPage_dash'>
       <div className='loginPage_dash__container'>

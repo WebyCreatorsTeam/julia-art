@@ -12,16 +12,18 @@ interface IUser {
 
 const page = async () => {
   const users: Array<IUser> = await getUsers();
-  
+
   return (
-    <div>
+    <section className='admin'>
       <AddBtn link={true} linkText="Добавить пользователя" href="/dashboard/users/save-new-user" />
       <MainBackGroung>
-        <div style={{columnCount: 3, height: "100%", columnFill: "auto"}}>
-          {users && users.map((el, i) => (<ListItem userList={true} key={i} user={el} />))}
+        <div className="admin__listOfUsers">
+          {users && users.map((el, i) => (
+            <ListItem userList={true} key={i} user={el} />
+          ))}
         </div>
       </MainBackGroung>
-    </div>
+    </section>
   )
 }
 

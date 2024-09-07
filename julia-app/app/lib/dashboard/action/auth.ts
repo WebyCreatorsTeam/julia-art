@@ -7,9 +7,10 @@ import { redirect } from 'next/navigation';
 import { AuthError } from 'next-auth';
 import bcrypt from 'bcrypt';
 import { State } from "@/app/(dashboard)/_ts/definitions";
-import { RegValidSchema } from "../validation/validation";
+import { RegValidSchema, UpdateValidSchema } from "../validation/validation";
 import { signIn } from "@/auth";
 
+// --- SAVE NEW ADMIN --- //
 export const registUser = async (prevState: State, formData: FormData) => {
     const validatedFields = RegValidSchema.safeParse({
         userEmail: formData.get('userEmail'),
@@ -18,8 +19,6 @@ export const registUser = async (prevState: State, formData: FormData) => {
         userName: formData.get('userName'),
     })
 
-    // console.log(validatedFields)
-
     if (!validatedFields.success) {
         return {
             errors: validatedFields.error.flatten().fieldErrors,
@@ -27,6 +26,7 @@ export const registUser = async (prevState: State, formData: FormData) => {
             success: false
         };
     }
+
     const { userEmail, userPassword, userName } = validatedFields.data;
 
     const newPass = await bcrypt.hash(userPassword, 10);
@@ -35,14 +35,42 @@ export const registUser = async (prevState: State, formData: FormData) => {
         await connectToDatabase()
         await User.create({ userEmail, userPassword: newPass, userName })
     } catch (error) {
-        return { message: 'Something went wrong' }
+        return { message: 'Something went wrong', success: false }
     }
 
     revalidatePath('/dashboard/users');
     redirect('/dashboard/users');
 }
 
+// --- UPDATE ADMIN --- //
+export async function updateUser(userId: string, prevState: State, formData: FormData) {
+    const validatedFields = UpdateValidSchema.safeParse({
+        userEmail: formData.get('userEmail'),
+        userName: formData.get('userName'),
+    })
 
+    if (!validatedFields.success) {
+        return {
+            errors: validatedFields.error.flatten().fieldErrors,
+            message: validatedFields.error.flatten().fieldErrors,
+            success: false
+        };
+    }
+    const { userEmail, userName } = validatedFields.data;
+
+    try {
+        await connectToDatabase()
+        await User.updateOne({ _id: userId }, { $set: { userEmail, userName } })
+    } catch (error) {
+        return { message: 'Something went wrong', success: false }
+    }
+
+    revalidatePath('/dashboard/users');
+    // redirect('/dashboard/users');
+    return { errors: {},message: 'Success', success: true }
+}
+
+// --- LOGIN ADMIN --- //
 export async function authenticate(
     prevState: string | undefined,
     formData: FormData,

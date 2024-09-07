@@ -1,8 +1,14 @@
 import React from 'react'
+import "@/app/(dashboard)/_style/_ui/popup/_popup.scss";
 
-const Popup = () => {
+const Popup = ({ children, closeAction }: { children: React.ReactNode, closeAction: React.MouseEventHandler }) => {
   return (
-    <div>Popup</div>
+    <div className="popup">
+      <div className="popup__window">
+        <button className="popup__window--closeBtn" onClick={closeAction}>Close</button>
+        {children}
+      </div>
+    </div>
   )
 }
 

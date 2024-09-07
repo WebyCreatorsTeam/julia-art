@@ -20,7 +20,7 @@ const SaveNewUser = () => {
                     <h1>Добавить нового пользователя</h1>
                     <form action={formAction}>
                         {RegInputFileds.map((el, i) => (<FormInput key={i} state={state} type={el.type} placeholder={el.placeholder} name={el.name} autoComp={el.autoComp}/>))}
-                        <AuthBtn btnText="Зарегистрировать" />
+                        <AuthBtn btnType={"submit"} btnText="Зарегистрировать" />
                     </form>
                 </div>
             </div>

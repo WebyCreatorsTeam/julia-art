@@ -6,5 +6,10 @@
     min-height: 600px;
     box-sizing: border-box;
     padding: 30px;
-    color: $main_color_dark ;
+    color: $main_color_dark;
+
+    @media screen and (max-width: 680px) {
+        padding: 30px;
+        min-height: 400px;
+    }
 }

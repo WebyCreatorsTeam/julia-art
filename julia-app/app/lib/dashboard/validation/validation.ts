@@ -44,3 +44,8 @@ export const LogValidSchema = z.object({
     userEmail: userEmailValid,
     userPassword: passwordValid("Пожалуйста, заполните пароль."),
 })
+
+export const UpdateValidSchema = z.object({
+    userEmail: userEmailValid,
+    userName: userNameValid,
+})
