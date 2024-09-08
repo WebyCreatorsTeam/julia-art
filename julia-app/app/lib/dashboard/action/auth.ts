@@ -43,7 +43,7 @@ export const registUser = async (prevState: State, formData: FormData) => {
 }
 
 // --- UPDATE ADMIN --- //
-export async function updateUser(userId: string, prevState: State, formData: FormData) {
+export async function updateUser(userId: string, prevState: State, formData: FormData): Promise<State> {
     const validatedFields = UpdateValidSchema.safeParse({
         userEmail: formData.get('userEmail'),
         userName: formData.get('userName'),
@@ -52,7 +52,7 @@ export async function updateUser(userId: string, prevState: State, formData: For
     if (!validatedFields.success) {
         return {
             errors: validatedFields.error.flatten().fieldErrors,
-            message: validatedFields.error.flatten().fieldErrors,
+            message: "Something went wrong",
             success: false
         };
     }
