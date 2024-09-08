@@ -7,7 +7,7 @@ import FormInput from '../../Input/Input'
 import AuthBtn from '../../Buttons/AuthBtn/AuthBtn'
 import { State } from '@/app/(dashboard)/_ts/definitions'
 import { useFormState } from 'react-dom'
-import { updateUser } from '@/app/lib/dashboard/action/auth'
+import { deleteUser, updateUser } from '@/app/lib/dashboard/action/auth'
 
 interface IListItem {
     userList: boolean
@@ -27,6 +27,7 @@ const ListItem = ({ userList, category, user }: IListItem) => {
     const [openPopupEdit, setOpenPopupEdit] = React.useState(false)
     const updateUserWithId = updateUser.bind(null, user!._id)
     const [userState, userUpdateAction] = useFormState(updateUserWithId, initialState);
+    const deleteUserWithId = deleteUser.bind(null, user!._id)
     // const [cateforyState, categoryUpdateAction] = useFormState(updateCategoryWithId, initialState)
 
     const updateItem = () => {
@@ -34,7 +35,14 @@ const ListItem = ({ userList, category, user }: IListItem) => {
     }
 
     const deleteItem = () => {
-        userList ? console.log(user!._id) : console.log(category!._id)
+        const areSure = window.confirm("Уверены, что хотите удалить?")
+        if (areSure) {
+            if (userList) {
+                deleteUserWithId()
+            } else {
+                console.log(category!._id)
+            }
+        }
     }
 
     useEffect(() => {
@@ -45,7 +53,7 @@ const ListItem = ({ userList, category, user }: IListItem) => {
         <section className='listItem'>
             {userList ? user!.userName : "category"}
             <div>
-                <EditBtn edit={true} action={updateItem} />
+                {user?.userName.toLowerCase() !== "Weby Team".toLowerCase() && <EditBtn edit={true} action={updateItem} />}
                 {openPopupEdit && (
                     <Popup closeAction={() => setOpenPopupEdit(false)}>
                         <h1>Редактировать {userList ? "пользователя" : "Категорию"}</h1>
@@ -70,7 +78,7 @@ const ListItem = ({ userList, category, user }: IListItem) => {
                         </form>
                     </Popup>
                 )}
-                <EditBtn edit={false} action={() => { }} />
+                {user?.userName.toLowerCase() !== "Weby Team".toLowerCase() && <EditBtn edit={false} action={deleteItem} />}
             </div>
         </section>
     )

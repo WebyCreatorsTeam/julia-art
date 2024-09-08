@@ -67,7 +67,20 @@ export async function updateUser(userId: string, prevState: State, formData: For
 
     revalidatePath('/dashboard/users');
     // redirect('/dashboard/users');
-    return { errors: {},message: 'Success', success: true }
+    return { errors: {}, message: 'Success', success: true }
+}
+
+// --- DELETE ADMIN --- //
+export async function deleteUser(userId: string) {
+    console.log(userId)
+    try {
+        await connectToDatabase()
+        await User.deleteOne({ _id: userId })
+        revalidatePath('/dashboard/users');
+        return { message: 'Пользователь удален', success: true }
+    } catch (error) {
+        return { message: 'Something went wrong', success: false }
+    }
 }
 
 // --- LOGIN ADMIN --- //

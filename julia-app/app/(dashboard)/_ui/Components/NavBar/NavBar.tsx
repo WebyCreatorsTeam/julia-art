@@ -6,11 +6,15 @@ import Close from './Close'
 import Menu from './Menu'
 import Link from 'next/link'
 import { navLinks } from './navigationLinks'
+// import { useSession } from 'next-auth/react'
 
 const NavBar: FC = () => {
     const [isOpen, setIsOpen] = useState(false)
     const desktop = useMediaQuery({ query: '(min-width: 961px)' })
     const ref: any = useRef(null);
+    // const data = useSession()
+
+    // console.log(data)
 
     useEffect(() => {
         if (desktop) {
@@ -30,7 +34,7 @@ const NavBar: FC = () => {
         return () => {
             window.removeEventListener("mousedown", handleOutSideClick);
         };
-    }, [ref]); 
+    }, [ref]);
 
     return (
         <header>

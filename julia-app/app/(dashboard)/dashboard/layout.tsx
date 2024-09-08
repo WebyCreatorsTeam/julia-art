@@ -1,6 +1,7 @@
 import "../_style/index.scss"
 import Footer from "../_ui/Components/Footer"
 import NavBar from "../_ui/Components/NavBar/NavBar"
+import AuthProvider from "../AuthContext"
 
 export const metadata = {
   title: 'Админ Панель',
@@ -18,14 +19,16 @@ export const metadata = {
 
 export default function RootLayout({ children, }: { children: React.ReactNode }) {
   return (
-    <html lang="ru">
-      <body>
-        <NavBar />
-        <main className="elementWidth">
-          {children}
-        </main>
-        {/* <Footer /> */}
-      </body>
-    </html>
+    // <AuthProvider>
+      <html lang="ru">
+        <body>
+          <NavBar />
+          <main className="elementWidth">
+            {children}
+          </main>
+          {/* <Footer /> */}
+        </body>
+      </html>
+    // </AuthProvider>
   )
 }
