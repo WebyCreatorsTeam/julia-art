@@ -21,7 +21,7 @@ const AddBtn = ({ link, href, linkText, btnText, btnType, action }: IAddBtn) => 
         </div>
         {linkText}
       </Link> :
-      <button type={btnType} onClick={action} className="addBtn button">
+      <button type={btnType? btnType : "button"} onClick={action} className="addBtn button">
         <div className="darkback">
           <Image src="/dashboard/addBtn/plus.svg" width={12} height={12} alt="plus icon" />
         </div>

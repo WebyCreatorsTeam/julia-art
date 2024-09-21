@@ -7,8 +7,8 @@ import { redirect } from 'next/navigation';
 import { AuthError } from 'next-auth';
 import bcrypt from 'bcrypt';
 import { State } from "@/app/(dashboard)/_ts/definitions";
-import { RegValidSchema, UpdateValidSchema } from "../validation/validation";
 import { signIn } from "@/auth";
+import { RegValidSchema, UpdateValidSchema } from "../validation/auth.validation";
 
 // --- SAVE NEW ADMIN --- //
 export const registUser = async (prevState: State, formData: FormData) => {

@@ -42,6 +42,12 @@ export const validateValues = (inputKey: string, inputValue: string
             };
 
             break;
+        case "categoryType":
+            if (inputValue.length < 3
+            ) return {
+                continueWork: false, message: "Название категории должно состоять минимум из 3 символов"
+            };
+            break;
         default:
             return {
                 continueWork: false,

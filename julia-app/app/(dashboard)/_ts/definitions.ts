@@ -15,3 +15,11 @@ export type State = {
   message?: string | null;
   success?: boolean | null;
 };
+
+export type CategoryState = {
+  errors?: {
+    categoryType?: string[];
+  };
+  message?: string | null;
+  success?: boolean | null;
+}
