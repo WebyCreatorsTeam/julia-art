@@ -5,9 +5,17 @@ const CategorySchema = new Schema({
         type: String,
         require: true
     },
+    img: {
+        type: String,
+        require: true
+    },
     subCategory: [
         {
-            type: {
+            title: {
+                type: String,
+                require: true
+            }, 
+            img: {
                 type: String,
                 require: true
             }

@@ -25,6 +25,7 @@ const initialState: State = { message: null, success: null, errors: {} }
 
 const ListItem = ({ userList, category, user }: IListItem) => {
     const [openPopupEdit, setOpenPopupEdit] = React.useState(false)
+    const [openPopupEditCategory, setOpenPopupEditCategory] = React.useState(false)
     const updateUserWithId = updateUser.bind(null, user!._id)
     const [userState, userUpdateAction] = useFormState(updateUserWithId, initialState);
     const deleteUserWithId = deleteUser.bind(null, user!._id)
@@ -53,10 +54,10 @@ const ListItem = ({ userList, category, user }: IListItem) => {
         <section className='listItem'>
             {userList ? user!.userName : "category"}
             <div>
-                {user?.userName.toLowerCase() !== "Weby Team".toLowerCase() && <EditBtn edit={true} action={updateItem} />}
+                {userList ? user?.userName.toLowerCase() !== "Weby Team".toLowerCase() && <EditBtn edit={true} action={updateItem} /> : <EditBtn edit={true} action={updateItem} />}
                 {openPopupEdit && (
                     <Popup closeAction={() => setOpenPopupEdit(false)}>
-                        <h1>Редактировать {userList ? "пользователя" : "Категорию"}</h1>
+                        <h1>Редактировать {userList ? "Пользователя" : "Категорию"}</h1>
                         <form action={userList ? userUpdateAction : "categoryUpdateAction"}>
                             <FormInput
                                 state={userList ? userState : "cateforyState"}
@@ -78,7 +79,7 @@ const ListItem = ({ userList, category, user }: IListItem) => {
                         </form>
                     </Popup>
                 )}
-                {user?.userName.toLowerCase() !== "Weby Team".toLowerCase() && <EditBtn edit={false} action={deleteItem} />}
+                {userList ? user?.userName.toLowerCase() !== "Weby Team".toLowerCase() && <EditBtn edit={false} action={deleteItem} /> : <EditBtn edit={false} action={deleteItem} />}
             </div>
         </section>
     )
