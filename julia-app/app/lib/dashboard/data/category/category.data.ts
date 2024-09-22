@@ -1,12 +1,13 @@
 import connectToDatabase from "@/app/lib/mongodb"
 import Category from "../../_models/category.model"
 
-export const getCategory = async () => {
+export const getCategories = async () => {
     try {
         await connectToDatabase()
         const categories = await Category.find({})
-        return categories
+        return JSON.parse(JSON.stringify(categories)); 
+        // return categories
     } catch (error) {
-        console.error(error)
+        return { message: 'Something went wrong', success: false }
     }
 }

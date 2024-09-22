@@ -1,8 +1,9 @@
-import { getCategories } from '@/app/lib/dashboard/action/category'
+// import { getCategories } from '@/app/lib/dashboard/action/category'
 import React from 'react'
 import ListItem from '../ListItem/ListItem'
 import MainBackGroung from '../../MainBackgrd/MainBackGroung'
 import AddBtn from '../../Buttons/AddBtn/AddBtn'
+import { getCategories } from '@/app/lib/dashboard/data/category/category.data'
 
 interface ICategory {
     type: string,
@@ -15,7 +16,7 @@ interface ICategory {
 const CategoryList = async () => {
     const categories: Array<ICategory> = await getCategories()
 
-    console.log(categories)
+    // console.log(categories)
     return (
         <section style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px", width: "100%" }}>
             {categories && categories.map((category, i: number) => (
