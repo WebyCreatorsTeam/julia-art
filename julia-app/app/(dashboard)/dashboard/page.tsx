@@ -2,8 +2,6 @@ import AddBtn from '../_ui/Buttons/AddBtn/AddBtn';
 import CategoryList from '../_ui/Components/Category/CategoryList'
 import { Suspense } from 'react'
 
-
-
 const CategoryPage = () => {
   return (
     <section className='admin'>
