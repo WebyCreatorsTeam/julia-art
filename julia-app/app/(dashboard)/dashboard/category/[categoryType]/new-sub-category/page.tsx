@@ -11,12 +11,14 @@ interface IPageNewSubCategory {
 
 const page = ({ params }: IPageNewSubCategory) => {
   const { categoryType } = params;
+  const categoryTitle = decodeURIComponent(decodeURIComponent(categoryType)).replaceAll("-", " ");
+  
   return (
     <div>
       <Link href='/dashboard'>Назад</Link>
       <MainBackGroung>
-        <h1>{categoryType}</h1>
-        <h2>Добавление Новой Подкатегории</h2>
+        {/* <h1>{categoryTitle}</h1> */}
+        <h2>Добавление Новой Подкатегории в Категорию {categoryTitle}</h2>
         {/* <form action={categoryFormAction}>
         <FormInput
           state={state}

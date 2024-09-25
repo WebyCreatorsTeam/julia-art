@@ -6,7 +6,7 @@ const CategoryPage = () => {
   return (
     <section className='admin'>
       <AddBtn link={true} linkText="Добавить Категрию" href="/dashboard/category/add-new-category" />
-      <Suspense fallback={<></>}>
+      <Suspense fallback={<>Loading</>}>
         <CategoryList />
       </Suspense>
     </section>
