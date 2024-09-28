@@ -6,6 +6,7 @@ import { saveNewCategory } from '@/app/lib/dashboard/action/category';
 import { useFormState } from 'react-dom';
 
 const initialState: State = { message: null, success: null, errors: {} }
+
 const AddCategoryForm = () => {
     const [state, formAction] = useFormState(saveNewCategory, initialState)
     // console.log(state)

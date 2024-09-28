@@ -25,10 +25,10 @@ const initialState: State = { message: null, success: null, errors: {} }
 
 const ListItem = ({ userList, category, user }: IListItem) => {
     const [openPopupEdit, setOpenPopupEdit] = React.useState(false)
-    const [openPopupEditCategory, setOpenPopupEditCategory] = React.useState(false)
-    const updateUserWithId = updateUser.bind(null, user!._id)
-    const [userState, userUpdateAction] = useFormState(updateUserWithId, initialState);
-    const deleteUserWithId = deleteUser.bind(null, user!._id)
+    // const [openPopupEditCategory, setOpenPopupEditCategory] = React.useState(false)
+    // const updateUserWithId = updateUser.bind(null, user!._id)
+    // const [userState, userUpdateAction] = useFormState(updateUserWithId, initialState);
+    // const deleteUserWithId = deleteUser.bind(null, user!._id)
     // const [cateforyState, categoryUpdateAction] = useFormState(updateCategoryWithId, initialState)
 
     const updateItem = () => {
@@ -39,16 +39,16 @@ const ListItem = ({ userList, category, user }: IListItem) => {
         const areSure = window.confirm("Уверены, что хотите удалить?")
         if (areSure) {
             if (userList) {
-                deleteUserWithId()
+                // deleteUserWithId()
             } else {
                 console.log(category!._id)
             }
         }
     }
 
-    useEffect(() => {
-        if (userState.success) setOpenPopupEdit(false)
-    }, [userState])
+    // useEffect(() => {
+    //     if (userState.success) setOpenPopupEdit(false)
+    // }, [userState])
 
     return (
         <section className='listItem'>
@@ -58,9 +58,11 @@ const ListItem = ({ userList, category, user }: IListItem) => {
                 {openPopupEdit && (
                     <Popup closeAction={() => setOpenPopupEdit(false)}>
                         <h1>Редактировать {userList ? "Пользователя" : "Категорию"}</h1>
-                        <form action={userList ? userUpdateAction : "categoryUpdateAction"}>
+                        <form
+                        // action={userList ? userUpdateAction : "categoryUpdateAction"}
+                        >
                             <FormInput
-                                state={userList ? userState : "cateforyState"}
+                                // state={userList ? userState : "cateforyState"}
                                 type={"text"}
                                 placeholder={userList ? "Имя пользователя" : "category"}
                                 name={"userName"}
@@ -68,7 +70,7 @@ const ListItem = ({ userList, category, user }: IListItem) => {
                                 defaultValue={userList ? user!.userName : "category"}
                             />
                             {userList && <FormInput
-                                state={userList ? userState : "cateforyState"}
+                                // state={userList ? userState : "cateforyState"}
                                 type={"email"}
                                 placeholder={userList ? "Email пользователя" : "category"}
                                 name={"userEmail"}
