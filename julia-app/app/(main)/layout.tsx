@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import TopBar from "./components/navbar/TopBar";
 
-
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,8 +19,6 @@ export default function RootLayout({
     <html lang="en">
     <body className={inter.className}>
         <TopBar />
-        
-      
         <main>{children}</main>
       </body>
     </html>
