@@ -14,6 +14,10 @@ interface IUser {
 const GetUsers = async () => {
     const users: Array<IUser> = await getUsers();
 
+    // const updateItem = () => {
+    //     userList ? setOpenPopupEdit(true) : console.log(category!._id)
+    // }
+
     return (
         <div className="admin__listOfUsers">
             {users && users.map((el, i) => (

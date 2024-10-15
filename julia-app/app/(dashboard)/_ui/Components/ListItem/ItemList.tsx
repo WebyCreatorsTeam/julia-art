@@ -17,16 +17,18 @@ const ItemList = ({
     title,
     updateItem,
     deleteItem,
-    inputPlaceholder,
-    inputName,
-    inputValue,
-    userList,
+    // inputPlaceholder,
+    // inputName,
+    // inputValue,
+    // userList,
     children
 }: IItemListProps) => {
+    const [openPopupEdit, setOpenPopupEdit] = React.useState(false)
+
     return (
         <section className='listItem'>
             <p>{title}</p>
-            <EditBtn edit={true} action={updateItem} />
+            <EditBtn edit={true} action={() => setOpenPopupEdit(true)} />
             <EditBtn edit={false} action={deleteItem} />
             <Popup closeAction={() => { }}>
                 <p>{updateItem}</p>

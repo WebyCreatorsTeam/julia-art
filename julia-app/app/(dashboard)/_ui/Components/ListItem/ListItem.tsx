@@ -31,9 +31,9 @@ const ListItem = ({ userList, category, user }: IListItem) => {
     // const deleteUserWithId = deleteUser.bind(null, user!._id)
     // const [cateforyState, categoryUpdateAction] = useFormState(updateCategoryWithId, initialState)
 
-    const updateItem = () => {
-        userList ? setOpenPopupEdit(true) : console.log(category!._id)
-    }
+    // const updateItem = () => {
+    //     setOpenPopupEdit(true)
+    // }
 
     const deleteItem = () => {
         const areSure = window.confirm("Уверены, что хотите удалить?")
@@ -54,7 +54,8 @@ const ListItem = ({ userList, category, user }: IListItem) => {
         <section className='listItem'>
             {userList ? user!.userName : "category"}
             <div>
-                {userList ? user?.userName.toLowerCase() !== "Weby Team".toLowerCase() && <EditBtn edit={true} action={updateItem} /> : <EditBtn edit={true} action={updateItem} />}
+                {/* {userList ? user?.userName.toLowerCase() !== "Weby Team".toLowerCase() && <EditBtn edit={true} action={() => setOpenPopupEdit(true)} /> : <EditBtn edit={true} action={updateItem} />} */}
+                <EditBtn edit={true} action={() => setOpenPopupEdit(true)} />
                 {openPopupEdit && (
                     <Popup closeAction={() => setOpenPopupEdit(false)}>
                         <h1>Редактировать {userList ? "Пользователя" : "Категорию"}</h1>
@@ -81,7 +82,8 @@ const ListItem = ({ userList, category, user }: IListItem) => {
                         </form>
                     </Popup>
                 )}
-                {userList ? user?.userName.toLowerCase() !== "Weby Team".toLowerCase() && <EditBtn edit={false} action={deleteItem} /> : <EditBtn edit={false} action={deleteItem} />}
+                {/* {userList ? user?.userName.toLowerCase() !== "Weby Team".toLowerCase() && <EditBtn edit={false} action={deleteItem} /> : <EditBtn edit={false} action={deleteItem} />} */}
+                <EditBtn edit={false} action={deleteItem} />
             </div>
         </section>
     )
