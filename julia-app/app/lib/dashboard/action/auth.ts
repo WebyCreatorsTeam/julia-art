@@ -12,7 +12,7 @@ import { RegValidSchema, UpdateValidSchema } from "../validation/auth.validation
 
 // --- SAVE NEW ADMIN --- //
 export const registUser = async (prevState: State, formData: FormData) => {
-    const validatedFields = RegValidSchema.safeParse({
+    const validatedFields = RegValidSchema.safeParse({ 
         userEmail: formData.get('userEmail'),
         userPassword: formData.get('userPassword'),
         confirmUserPassword: formData.get('confirmUserPassword'),
